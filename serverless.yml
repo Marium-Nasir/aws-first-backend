@@ -1,0 +1,133 @@
+org: mariumnasir
+app: aws-first-api-app
+service: aws-project
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 128
+  timeout: 10 
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+  addProduct:
+    handler: src/handlers/add-product.handler
+    events: 
+      - httpApi:
+          path: /addproduct       
+          method: post
+
+  getAllProducts:
+    handler: src/handlers/get-all-products.handler
+    events: 
+      - httpApi:
+          path: /getallproduct       
+          method: get
+
+  getAllCategories:
+    handler: src/handlers/get-all-categories.handler
+    events: 
+      - httpApi:
+          path: /getallcategories       
+          method: get
+
+  getProductByCategory:
+    handler: src/handlers/get-product-by-category.handler
+    events: 
+      - httpApi:
+          path: /getproductbycategory/{category}      
+          method: get
+
+  updateProduct:
+    handler: src/handlers/update-product.handler
+    events: 
+      - httpApi:
+          path: /updateproduct/{id}       
+          method: patch
+
+  deleteProduct:
+    handler: src/handlers/delete-product.handler
+    events: 
+      - httpApi:
+          path: /deleteproduct/{id}       
+          method: delete
+
+  signupuser:
+    handler: src/handlers/signup-user.handler
+    events: 
+      - httpApi:
+          path: /signup       
+          method: post
+
+  confirmEmail:
+    handler: src/handlers/confirm-email.handler
+    events: 
+      - httpApi:
+          path: /confirmemail       
+          method: post
+
+  signupUserToDb:
+    handler: src/handlers/signup-to-db.handler
+    events: 
+      - httpApi:
+          path: /signuptodb       
+          method: post
+
+  signin:
+    handler: src/handlers/signin.handler
+    events: 
+      - httpApi:
+          path: /signin       
+          method: post
+
+  addCart:
+    handler: src/handlers/add-cart.handler
+    events: 
+      - httpApi:
+          path: /addcart       
+          method: post
+
+  getAllCarts:
+    handler: src/handlers/get-all-carts.handler
+    events: 
+      - httpApi:
+          path: /getallcart       
+          method: get
+
+  getCarts:
+    handler: src/handlers/get-cart.handler
+    events: 
+      - httpApi:
+          path: /getcarts/{id}       
+          method: get
+
+  getCartsByDate:
+    handler: src/handlers/get-carts-by-date.handler
+    events: 
+      - httpApi:
+          path: /getcartsbydate/{id}       
+          method: get
+
+  updateCart:
+    handler: src/handlers/update-cart.handler
+    events: 
+      - httpApi:
+          path: /updatecart/{id}      
+          method: patch
+          
+  deleteCart:
+    handler: src/handlers/delete-cart.handler
+    events: 
+      - httpApi:
+          path: /deletecart/{id}       
+          method: delete
